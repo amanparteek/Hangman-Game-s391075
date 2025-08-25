@@ -1,3 +1,14 @@
+"""
+This module contains the user interface (UI) for the Hangman game, built using the Tkinter library.
+
+It includes the `HangmanUI` class, which handles the graphical interface for the game. The UI allows the user to:
+1. Select the game difficulty (basic or intermediate).
+2. Enter guesses and view the masked word.
+3. See the number of lives left and the timer countdown.
+4. Restart the game after it ends.
+
+The UI communicates with the `HangmanGame` class to update the game state and displays the results.
+"""
 import tkinter as tk
 import time
 import threading
