@@ -1,12 +1,21 @@
+"""
+This module contains unit tests for the Hangman game logic.
+The tests ensure that the core functionality of the game works correctly, 
+including word masking, correct and incorrect guesses, life deduction, 
+and win/loss conditions.
+"""
 import unittest
 from hangman_game import HangmanGame
 
 
 class TestHangman(unittest.TestCase):
-    """Test cases for Hangman game logic."""
+    """Test cases for the Hangman game logic."""
 
     def setUp(self):
-        """Sets up the game with a small word list for testing."""
+        """
+        Sets up the game with a small word list for testing.
+        This method is called before every test method.
+        """
         words = {'basic': ['PYTHON'], 'intermediate': ['UNIT TEST']}
         self.game = HangmanGame(words)
 
@@ -20,7 +29,7 @@ class TestHangman(unittest.TestCase):
     def test_correct_guess(self):
         """Test that a correct guess reveals the correct letter and doesn't deduct lives."""
         self.game.start_new_game('basic')
-        result, message = self.game.guess_letter('P')  # Test for correct guess 'P'
+        result, _ = self.game.guess_letter('P')  # Test for correct guess 'P'
         self.assertTrue(result)  # The result should be True for a correct guess.
         self.assertIn('P', self.game.masked_word)  # 'P' should be revealed in the masked word.
 
@@ -28,7 +37,7 @@ class TestHangman(unittest.TestCase):
         """Test that a wrong guess deducts a life and the game continues."""
         self.game.start_new_game('basic')
         start_lives = self.game.lives  # Store the starting number of lives.
-        result, message = self.game.guess_letter('Z')  # Test for wrong guess 'Z'
+        result, _ = self.game.guess_letter('Z')  # Test for wrong guess 'Z'
         self.assertFalse(result)  # The result should be False for a wrong guess.
         self.assertEqual(self.game.lives, start_lives - 1)  # The number of lives should decrease by 1.
 
@@ -37,7 +46,8 @@ class TestHangman(unittest.TestCase):
         self.game.start_new_game('basic')
         for ch in "PYTHON":  # Guess each letter in the word.
             self.game.guess_letter(ch)
-        self.assertTrue(self.game.is_won())  # The game should be won when all letters are revealed.
+        self.assertTrue(self.game.is_game_over())  # The game should be over when all letters are revealed.
+        self.assertTrue(self.game.masked_word == "PYTHON")  # The word should match the original word.
 
     def test_time_expiration(self):
         """Test that the time expiration check works correctly."""
@@ -47,6 +57,7 @@ class TestHangman(unittest.TestCase):
         self.game.start_time -= 20  # Simulate time passing.
         time_expired = self.game.time_expired()
         self.assertTrue(time_expired)  # Time should be expired after 20 seconds.
+
 
 if __name__ == '__main__':
     unittest.main()
