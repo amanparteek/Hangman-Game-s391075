@@ -6,17 +6,17 @@ This is a Hangman game developed in Python using the Tkinter library for the gra
 
 Features
 
-  1.Interactive UI: The game features a clean and user-friendly graphical interface built using Tkinter, including vibrant colors, fonts, and responsive buttons.
+  1. Interactive UI: The game features a clean and user-friendly graphical interface built using Tkinter, including vibrant colors, fonts, and responsive buttons.
 
-  2.Word Levels: Players can choose between two difficulty levels — Basic and Intermediate, with different sets of words and phrases.
+  2. Word Levels: Players can choose between two difficulty levels — Basic and Intermediate, with different sets of words and phrases.
 
-  3.Live Countdown Timer: The game has a built-in timer that counts down with each guess, and players lose a life if the timer runs out.
+  3. Live Countdown Timer: The game has a built-in timer that counts down with each guess, and players lose a life if the timer runs out.
 
-  4.Dynamic Hangman Drawing: The hangman figure is drawn progressively as the player makes incorrect guesses. The game graphically shows the body parts of the hangman based on the number of wrong guesses.
+  4. Dynamic Hangman Drawing: The hangman figure is drawn progressively as the player makes incorrect guesses. The game graphically shows the body parts of the hangman based on the number of wrong guesses.
 
-  5.Game Reset: Players can restart the game without needing to reload the application, ensuring a smooth experience.
+  5. Game Reset: Players can restart the game without needing to reload the application, ensuring a smooth experience.
 
-  6.Real-Time Feedback: The game provides live feedback on the number of remaining lives, the current word (masked with guessed letters), and the time left.
+  6. Real-Time Feedback: The game provides live feedback on the number of remaining lives, the current word (masked with guessed letters), and the time left.
 
 Key Concepts
 
