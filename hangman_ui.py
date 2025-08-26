@@ -104,7 +104,7 @@ class HangmanUI:
         self.stop_timer = True
         self.start_game(self.level_var.get())
 
-    def make_guess(self, event=None):
+    def make_guess(self):
         """
         Handles the player's guess and updates the UI accordingly.
 
@@ -112,7 +112,7 @@ class HangmanUI:
         """
         guess = self.entry.get().strip()
         self.entry.delete(0, tk.END)
-        correct, message = self.game.guess_letter(guess)
+        message = self.game.guess_letter(guess)
         self.word_label.config(text=self._spaced(self.game.masked_word))
         self.lives_label.config(text=f"Lives: {self.game.lives}")
         self.info_label.config(text=message)
@@ -180,6 +180,10 @@ class HangmanUI:
         if self.game.is_won():
             self.info_label.config(text="You won! 🎉")
         else:
-            self.info_label.config(f"You lost! The answer was: {self.game.word}")
-        self.entry.config(state="disabled")
-        self.submit_btn.config(state="disabled")
+            self.info_label.config(text=f"You lost! The answer was: {self.game.word}")
+            self.entry.config(state="disabled")
+            self.submit_btn.config(state="disabled")
+if __name__ == "__main__":
+    root = tk.Tk()  # Initialize the Tkinter root window
+    app = HangmanUI(root)  # Create the game UI
+    root.mainloop()  # Start the Tkinter event loop
