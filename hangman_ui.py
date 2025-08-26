@@ -1,7 +1,8 @@
 """
 This module contains the user interface (UI) for the Hangman game, built using the Tkinter library.
 
-It includes the `HangmanUI` class, which handles the graphical interface for the game. The UI allows the user to:
+It includes the `HangmanUI` class, which handles the graphical interface for the game.
+The UI allows the user to:
 1. Select the game difficulty (basic or intermediate).
 2. Enter guesses and view the masked word.
 3. See the number of lives left and the timer countdown.
@@ -53,7 +54,8 @@ class HangmanUI:
         tk.OptionMenu(top_frame, self.level_var, "basic", "intermediate").pack(side="left")
         tk.Button(top_frame, text="Restart", command=self.restart_game).pack(side="left", padx=10)
 
-        self.canvas = tk.Canvas(self.root, width=320, height=260, bg="#f7f7f7", highlightthickness=0)
+        self.canvas = tk.Canvas(self.root, width=320, height=260,
+                                bg="#f7f7f7", highlightthickness=0)
         self.canvas.pack(pady=6)
 
         self.word_label = tk.Label(self.root, text="", font=("Consolas", 28))
@@ -74,7 +76,8 @@ class HangmanUI:
 
         status_frame = tk.Frame(self.root)
         status_frame.pack(pady=6)
-        self.lives_label = tk.Label(status_frame, text=f"Lives: {MAX_LIVES}", font=("Helvetica", 12))
+        self.lives_label = tk.Label(status_frame, text=f"Lives: {MAX_LIVES}",
+                                    font=("Helvetica", 12))
         self.lives_label.grid(row=0, column=0, padx=10)
         self.timer_label = tk.Label(status_frame, text="Time: 15", font=("Helvetica", 12))
         self.timer_label.grid(row=0, column=1, padx=10)
