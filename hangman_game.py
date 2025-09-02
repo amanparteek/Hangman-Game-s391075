@@ -9,7 +9,7 @@ class HangmanGame:
     def __init__(self, words, lives=6, timer_limit=15):
         """
         Initializes the Hangman game with given words, lives, and timer limit.
-        
+
         :param words: Dictionary of words categorized by level.
         :param lives: Number of lives the player has (default is 6).
         :param timer_limit: Time limit for each guess in seconds (default is 15).
@@ -25,21 +25,32 @@ class HangmanGame:
     def start_new_game(self, level='basic'):
         """
         Starts a new game by selecting a word based on the level.
-        Initializes the game variables and masks the word.
+        Initializes the game variables and masks the word with some letters revealed.
 
         :param level: Difficulty level ('basic' or 'intermediate').
         :return: Masked word with some letters revealed.
         """
-        self.word = random.choice(self.words[level]).upper()
-        self.lives = 6
-        self.guessed_letters.clear()
-        self.start_time = time.time()
+        self.word = random.choice(self.words[level]).upper()  # Select a word
+        self.lives = 6  # Reset lives
+        self.guessed_letters.clear()  # Clear guessed letters
+        self.start_time = time.time()  # Start the timer
 
+        # Randomly reveal 1–2 letters in the word
+        letters_to_reveal = set(random.sample(
+            [ch for ch in self.word if ch.isalpha()],
+            min(2, len([ch for ch in self.word if ch.isalpha()]))
+        ))
+
+        self.guessed_letters |= letters_to_reveal  # Add revealed letters to guessed letters
+
+        # Mask the word, revealing guessed letters
         self.masked_word = ''.join([
             ch if ch in self.guessed_letters or not ch.isalpha() else '_'
             for ch in self.word
         ])
+
         return self.masked_word
+
 
     def guess_letter(self, letter):
         """
@@ -76,3 +87,11 @@ class HangmanGame:
     def is_won(self):
         """Checks if the player has won the game by guessing all the letters."""
         return '_' not in self.masked_word
+
+    def is_lost(self):
+        """
+     Checks if the player has lost the game by running out of lives.
+
+    :return: True if the player has lost, otherwise False.
+    """
+        return self.lives <= 0
