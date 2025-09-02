@@ -1,7 +1,9 @@
 """
-This module contains the user interface (UI) for the Hangman game, built using the Tkinter library.
+This module contains the user interface (UI) for the Hangman game
+, built using the Tkinter library.
 
-It includes the `HangmanUI` class, which handles the graphical interface for the game.
+It includes the `HangmanUI` class
+, which handles the graphical interface for the game.
 The UI allows the user to:
 1. Select the game difficulty (basic or intermediate).
 2. Enter guesses and view the masked word.
@@ -48,7 +50,7 @@ class HangmanUI:
         # --- Header & Level selection ---
         header = tk.Label(
             root, text="Hangman (TDD Version)"
-            , font=("Helvetica", 18, "bold"), bg="#5A9EC9", fg="white"
+        , font=("Helvetica", 18, "bold"), bg="#5A9EC9", fg="white"
         )
         header.pack(pady=6)
 
@@ -56,11 +58,11 @@ class HangmanUI:
         top_frame.pack(pady=4)
         self.level_var = tk.StringVar(value="basic")
         tk.Label(top_frame, text="Select Level:"
-                , font=("Helvetica", 12), bg="#5A9EC9", fg="white").pack(side="left", padx=6)
+        , font=("Helvetica", 12), bg="#5A9EC9", fg="white").pack(side="left", padx=6)
         tk.OptionMenu(top_frame, self.level_var, "basic"
-                    , "intermediate").pack(side="left")
+        , "intermediate").pack(side="left")
         tk.Button(top_frame, text="Restart"
-                , command=self.restart_game, bg="#FF6F61", fg="white").pack(side="left", padx=10)
+        , command=self.restart_game, bg="#FF6F61", fg="white").pack(side="left", padx=10)
 
         # --- Canvas for hangman drawing ---
         self.canvas = tk.Canvas(root, width=320, height=260, bg="#f7f7f7", highlightthickness=0)
@@ -82,17 +84,17 @@ class HangmanUI:
         self.entry.grid(row=0, column=0, padx=4)
         self.entry.bind("<Return>", self.make_guess)
         self.submit_btn = tk.Button(input_frame, text="Guess"
-                                , command=self.make_guess, bg="#F1FAEE", fg="#1D3557")
+        , command=self.make_guess, bg="#F1FAEE", fg="#1D3557")
         self.submit_btn.grid(row=0, column=1, padx=6)
 
         # --- Lives & Timer ---
         status_frame = tk.Frame(root)
         status_frame.pack(pady=6)
         self.lives_label = tk.Label(status_frame, text=f"Lives: {MAX_LIVES}"
-                                , font=("Helvetica", 12), fg="#1D3557", bg="#F1FAEE")
+        , font=("Helvetica", 12), fg="#1D3557", bg="#F1FAEE")
         self.lives_label.grid(row=0, column=0, padx=10)
         self.timer_label = tk.Label(status_frame, text="Time: 15"
-                                , font=("Helvetica", 12), fg="#1D3557", bg="#F1FAEE")
+        , font=("Helvetica", 12), fg="#1D3557", bg="#F1FAEE")
         self.timer_label.grid(row=0, column=1, padx=10)
 
         # Start first game
