@@ -82,9 +82,10 @@ class HangmanUI:
         input_frame.pack(pady=6)
         self.entry = tk.Entry(input_frame, font=("Helvetica", 14), width=5, justify="center")
         self.entry.grid(row=0, column=0, padx=4)
-        self.entry.bind("<Return>", self.make_guess)
-        self.submit_btn = tk.Button(input_frame, text="Guess"
-        , command=self.make_guess, bg="#F1FAEE", fg="#1D3557")
+        self.entry.bind("<Return>", lambda event=None: self.make_guess())
+        self.submit_btn = tk.Button(input_frame, text="Guess", command=lambda: self.make_guess(),
+        bg="#F1FAEE", fg="#1D3557")
+
         self.submit_btn.grid(row=0, column=1, padx=6)
 
         # --- Lives & Timer ---
